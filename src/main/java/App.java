@@ -18,7 +18,13 @@ public class App {
     get("/artists", (request,response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       model.put("artists", Artist.all());
-      model.put("template", "templates/artists");
+      model.put("template", "templates/artists.vtl");
+      return new ModelAndView(model,layout);
+    }, new VelocityTemplateEngine());
+
+    get("/artists/new", (request,response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/artist-form.vtl");
       return new ModelAndView(model,layout);
     }, new VelocityTemplateEngine());
 
@@ -32,11 +38,12 @@ public class App {
 
     get("/artists/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-
       Artist artist = Artist.find(Integer.parseInt(request.params(":id")));
       model.put("artist", artist);
       model.put("template", "templates/artists.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+
   }
 }
