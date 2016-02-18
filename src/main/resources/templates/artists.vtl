@@ -7,3 +7,12 @@ artists.vtl
 #end
 </ul>
 <a href="/artists/new">Add New Artist</a>
+
+<h1> All Albums </h1>
+
+<ul>
+#foreach ($album in $albums)
+<li><a href="/albums/$album.getId()">$album.getTitle()</a></li>
+#end
+</ul>
+<a href="/albums/new">Add New Album</a>
