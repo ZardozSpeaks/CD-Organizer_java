@@ -8,4 +8,10 @@ public class ArtistTest {
     Artist testArtist = new Artist("testArtist");
     assertEquals(true, testArtist instanceof Artist);
   }
+
+  @Test
+  public void getArtist_returnsArtist_Woot() {
+    Artist testArtist = new Artist("Woot");
+    assertEquals("Woot", testArtist.getArtist());
+  }
 }
